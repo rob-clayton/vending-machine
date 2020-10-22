@@ -10,6 +10,7 @@ SimpleCov.start
 require 'require_all'
 require 'pry'
 
+require_all 'controllers'
 require_all 'lib'
 require_all 'models'
 
