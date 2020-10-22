@@ -26,4 +26,28 @@ class VendingMachine
   def balance
     MoneyPresenter.new.present(total_balance)
   end
+
+  def purchase(item_name)
+    item = inventory_controller.find_item(item_name)
+
+    if item.in_stock?
+      change = money.calculate_change(total_balance: total_balance, purchase_price: item.price)
+      purchase_item(change, item) if change
+    else
+      "Sorry #{item.name} is out of stock!"
+    end
+  end
+
+  private
+
+  def purchase_item(change, item)
+    puts "Your change is: #{change.map(&:keys).join(', ')}"
+    reset_balance
+    inventory_controller.minus_one_stock(item.name)
+    puts "Here is your #{item.name}!"
+  end
+
+  def reset_balance
+    @total_balance = 0
+  end
 end

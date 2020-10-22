@@ -12,6 +12,10 @@ class Item
     @stock = stock
   end
 
+  def in_stock?
+    stock.positive?
+  end
+
   private
 
   def validate_item(name, price, stock)

@@ -22,7 +22,7 @@ class InventoryController
 
   def minus_one_stock(name)
     item = find_item(name)
-    raise StandardError, 'Cannot have stock below 0' if item.stock <= 0
+    raise StandardError, 'Cannot have stock below 0' if item.stock.zero?
 
     update(name, item.price, item.stock - 1)
   end
@@ -32,8 +32,8 @@ class InventoryController
   end
 
   def update(name, price, stock)
-    raise StandardError, 'Cannot have stock below 0' unless stock.is_a?(Integer) && stock.positive?
-    raise StandardError, 'Cannot have a price below 0' unless price.is_a?(Integer) && price.positive?
+    raise StandardError, 'Cannot have stock below 0' unless stock.is_a?(Integer) && stock >= 0
+    raise StandardError, 'Cannot have a price below 0' unless price.is_a?(Integer) && price >= 0
 
     inventory[name] = Item.new(name, price, stock)
   end

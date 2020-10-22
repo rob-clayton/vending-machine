@@ -9,6 +9,6 @@ class MoneyPresenter
   private
 
   def format_money(balance)
-    "£#{"%.2f" % (balance.to_f / 100)}"
+    "£#{format('%.2f', (balance.to_f / 100))}"
   end
 end
