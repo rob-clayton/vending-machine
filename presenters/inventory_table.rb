@@ -10,7 +10,7 @@ class InventoryTable
   STOCK = 'Stock'
 
   def present(inventory)
-    return unless inventory.is_a?(Array)
+    return unless inventory.is_a?(Hash)
     return if inventory.empty?
 
     puts_table(inventory.values.map do |item|
