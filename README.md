@@ -95,43 +95,44 @@ Here is your Mars!
 
 
 ## Conclusion
-During this project I focused on the quality of the code being written and the design of the application.
+During this project, I focused on the quality of the code written and the design of the application.
 
-For design I specificallly wanted seporation of concerns. Having a lib directory to handle more functional or complex tasks.
+For design, I specifically wanted a separation of concerns. A lib directory to handle more functional or complex tasks. 
 Simple Models for base object types. Controllers to interface with the Models and hold the interaction logic, and 
-Presenters to handle formatting.
+Presenters to control the formatting.
 
-On code quality, I wanted to make sure quality code was written, even if it meant not all objects are met. 
+On code quality: I wanted to write quality code, even if it meant not all objects are met. 
 
-With this in mind I started on what I presumed to be the most complex section, calculating the returned change. 
+With this in mind, I started on what I presumed to be the most complicated section, calculating the returned change. 
 I spend quite some time making sure this is very clean, readable, and efficient. 
 
-After dealing with the complexity I focused on the design. Creating an Item model and a CRUD style Inventory Controller, 
-allowing for not only a clean interface, but should be instantly understandable by another developer. 
+After dealing with the complexity, I focused on the design. I created an Item model and a CRUD style Inventory Controller, 
+allowing for not only a clean interface but something that should be instantly understandable by another developer. 
 
 A note on the InventoryController:
-I did debate about using a SQLite database and storing Item's in memory. This could have been achieved in the InventoryController, 
-in initialise we could create a new SQLite table to store Items. Additionaly InventoryController could be a singleton class 
-allowing the Inventory Database table to be called from anywhere in the app and still have a single source of truth. 
-This could have been a compromise considering we have no server or framework where each class is instanciated.
+I did debate about using an SQLite database and storing Items in memory. This could have been achieved in the 
+InventoryController, on initialise we could create a new SQLite table to store Items. Additionally, InventoryController 
+could be a singleton class, allowing the Inventory Database table to be called from anywhere in the app and still have a 
+single source of truth. This could have been a compromise considering we have no server or framework where each class is 
+instantiated.
 
-After creating the Model, Controller design, and completing the more complex Money class, the one thing missing was a way
-to display the data. I used a gem call terminal-table to present the Inventory and wrote some basic string formatting to 
-present the money.
+After creating the Model, Controller design, and completing the more complex Money class, the one thing missing was a 
+way to display the data. I used a gem called terminal-table to present the Inventory and wrote some basic string 
+formatting to present the money.
 
-Having creating this core functionality, time was running low. The `purchase` and `balance` methods are only written in 
-the main `vending_machine.rb` for this reason. As the functionality was already written, I at least wanted to make 
-program functional even if it meant piecing it together in the main file.
+Now having this core functionality, time was running low. The `purchase` and `balance` methods are only written in the 
+main `vending_machine.rb` for this reason. As the functionality was already created, I at least wanted to make program 
+functional even if it meant piecing it together in the main file.
 
 ### Futher work
-- There is no function to insert coins. With the Money class I would verify that real denominations are being
-inserted, then append the total to the balance. To make the app workable, I have set the default amount to £2.00 when a
-new machine is created.
-- There is no Change tracking. The correct change is returned after a purchase, but there is not a store of how many of
-each coin is in the machine. I planned to created another Model, Controller design just as I have with Item and Inventory.
+- There is no function to insert coins. With the Money class, I would verify that correct denominations are inserted, 
+then append the total to the balance. To make the app workable, I have set the default amount to £2.00 when a new
+machine is created.
+- There is no Change tracking. The correct change is returned after a purchase, but there is not a store of how many of 
+each coin is in the machine. I planned to create another Model, Controller design just as I have with Item and Inventory. 
 It would have a Coin Model and a Balance Controller.
-- There is no Reload option. The functionality is ready to be used in the Inventory Controller, however I did not have time 
-to write the class and check all the validations etc.
+- There is no Reload option. The functionality is ready to be used in the Inventory Controller; however, I did not have 
+time to write the class and check all the validations.
 
 #### Additional ideas:
 - If I had a lot more time I would create a script, that would trigger a Command Line Interface (CLI). The CLI would move 
