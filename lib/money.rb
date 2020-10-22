@@ -1,9 +1,39 @@
+require 'pry'
+
 class Money
+  COINS = [
+    { "£2" => 200 },
+    { "£1" => 100 },
+    { "50p" => 50 },
+    { "20p" => 20 },
+    { "10p" => 10 },
+    { "5p" => 5 },
+    { "2p" => 2 },
+    { "1p" => 1 }
+  ]
+
   def calculate_change(total_balance: nil, purchase_price: nil)
     validate_inputs(total_balance, purchase_price)
+    recursively_find_change(total_balance - purchase_price)
+  end
+
+  def largest_coin(total_balance)
+    return nil if total_balance.nil?
+    return nil unless total_balance.is_a?(Integer)
+
+    COINS.each_with_object([]) do |coin, matching_coins|
+      matching_coins << coin if coin.values.first <= total_balance
+    end.sort_by(&:values).last
   end
 
   private
+
+  def recursively_find_change(remaining_change, change = [])
+    return change if remaining_change == 0
+
+    coin = largest_coin(remaining_change)
+    recursively_find_change(remaining_change -= coin.values.first, change << coin)
+  end
 
   def validate_inputs(total_balance, purchase_price)
     raise StandardError, NO_TOTAL_BALANCE_ERROR if total_balance.nil?

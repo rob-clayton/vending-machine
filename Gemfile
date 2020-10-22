@@ -10,6 +10,7 @@ group :test do
 end
 
 group :test, :development do
+  gem 'pry-byebug', '3.9.0'
   gem 'rubocop', '0.93.1'
 end
 

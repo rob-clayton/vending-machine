@@ -8,6 +8,8 @@ require 'simplecov'
 SimpleCov.start
 
 require 'require_all'
+require 'pry'
+
 require_all 'lib'
 
 RSpec.configure do |config|
