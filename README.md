@@ -47,7 +47,7 @@ Create a new vending machine:
 [2] pry(main)> vm = VendingMachine.new
 => #<VendingMachine:0x00007fe9ab8d69d0 ... >
 ```
-All the commands can be ran this VendingMachine instance:
+All the commands can be ran on this VendingMachine instance:
 - help
 - inventory
 - balance
@@ -101,16 +101,16 @@ For design, I specifically wanted a separation of concerns. A lib directory to h
 Simple Models for base object types. Controllers to interface with the Models and hold the interaction logic, and 
 Presenters to control the formatting.
 
-On code quality: I wanted to write quality code, even if it meant not all objects are met. 
+On code quality: I wanted to write quality code, even if it meant not all objectives are met. 
 
 With this in mind, I started on what I presumed to be the most complicated section, calculating the returned change. 
-I spend quite some time making sure this is very clean, readable, and efficient. 
+I spent quite some time making sure this is very clean, readable, and efficient. 
 
 After dealing with the complexity, I focused on the design. I created an Item model and a CRUD style Inventory Controller, 
 allowing for not only a clean interface but something that should be instantly understandable by another developer. 
 
 A note on the InventoryController:
-I did debate about using an SQLite database and storing Items in memory. This could have been achieved in the 
+I did debate about using a SQLite database and storing Items in memory. This could have been achieved in the 
 InventoryController, on initialise we could create a new SQLite table to store Items. Additionally, InventoryController 
 could be a singleton class, allowing the Inventory Database table to be called from anywhere in the app and still have a 
 single source of truth. This could have been a compromise considering we have no server or framework where each class is 
@@ -136,6 +136,6 @@ time to write the class and check all the validations.
 
 #### Additional ideas:
 - If I had a lot more time I would create a script, that would trigger a Command Line Interface (CLI). The CLI would move 
-the user from directories and would also negate the need for any user input. A GEM such as TTY Prompt would be fantastic:
+the user between directories and would also negate the need for a user to input text. A Gem such as TTY Prompt would be fantastic:
 https://github.com/piotrmurach/tty-prompt
 
