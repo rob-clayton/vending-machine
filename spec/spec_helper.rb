@@ -13,6 +13,7 @@ require 'pry'
 require_all 'controllers'
 require_all 'lib'
 require_all 'models'
+require_all 'presenters'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here.

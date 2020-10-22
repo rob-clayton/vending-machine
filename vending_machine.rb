@@ -7,6 +7,7 @@ require_all 'controllers'
 require_all 'initialisers'
 require_all 'lib'
 require_all 'models'
+require_all 'presenters'
 
 # Entry class for the Vending Machine.
 class VendingMachine
@@ -17,18 +18,7 @@ class VendingMachine
     @money = Money.new
   end
 
-  def run
-    binding.pry
+  def inventory
+    InventoryTable.new.present(@inventory_controller.inventory)
   end
 end
-
-    # @balance = 0
-  # def insert_coin(coin)
-  # end
-  #
-  # def buy(item_name)
-  # end
-  #
-  # def reload(name, stock)
-  # end
-# VendingMachine.new.run
