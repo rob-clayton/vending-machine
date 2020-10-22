@@ -16,5 +16,5 @@ end
 
 group :test, :development, :production do
   gem 'require_all', '3.0.0'
-  gem "terminal-table", "~> 1.8"
+  gem 'terminal-table', '~> 1.8'
 end

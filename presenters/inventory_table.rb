@@ -13,15 +13,13 @@ class InventoryTable
     return unless inventory.is_a?(Array)
     return if inventory.empty?
 
-    puts_table(
-      inventory.values.map do |item|
-        [
-          item.name,
-          item.price,
-          item.stock
-        ]
-      end
-    )
+    puts_table(inventory.values.map do |item|
+      [
+        item.name,
+        item.price,
+        item.stock
+      ]
+    end)
   end
 
   private
