@@ -19,6 +19,13 @@ class VendingMachine
     @money = Money.new
   end
 
+  def help
+    puts 'The following commands are available:'
+    puts 'inventory - prints a table of all items'
+    puts 'balance - returns you balance'
+    puts "purchase(item_name) - for example purchase('Mars')"
+  end
+
   def inventory
     InventoryTable.new.present(@inventory_controller.inventory)
   end
